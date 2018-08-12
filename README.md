@@ -28,7 +28,6 @@
    * ... 的使用上, 如何实现一个数组的去重 (使用 Set 可以加分)
    * 
 
-
 ## 模块
 
 ### 模块机制
@@ -54,10 +53,22 @@
                   ...
                 })
            ```
+           ```
        - （服务器同步）CommonJs 
    * node 中 require 的实现原理
-       - 解析路径原理：先缓存，再按文件，补齐扩展名（js, node, json）, 再目录（package.json, 补齐扩展名）,再index补齐扩展名，再往上一级直到根目录，
+       - 解析路径原理：先缓存，再按文件，补齐扩展名（js, node, jsonx）, 再目录（package.json, 补齐扩展名）,再index补齐扩展名，再往上一级直到根目录，
+       - 执行原理，js用fs模块同步读取编译；node用c++扩展, dlopen()加载最后编译生成的文件；json用JSON.parse；其他扩展都按js方式来
 
+### 热更新
+   * require 会有一个 cache, 有这个 cache 在, 即使你更新了 .js 文件, 在代码中再次require 还是会拿到之前的编译好缓存在 v8 内存 (code space) 中的的旧代码. 但是如果只是单纯的清除掉 require 中的 cache, 再次 require确实能拿到新的代码, 但是这时候很容易碰到各地维持旧的引用依旧跑的旧的代码的问题.如果还要继续推行这种热更新代码的话, 可能要推翻当前的架构,从头开始从新设计一下目前的框架.
+   * 其他方式：让更新的部分动态化，存库，缓存等服务
 
+### 上下文
+   * vm模块创建新的上下文沙盒 (sandbox) 可以避免上下文被污染
+   * 为什么 Node.js 不给每一个.js文件以独立的上下文来避免作用域被污染?
+       - 性能
 
-
+### 包管理
+   * 锁版本
+       - npm shrinkwrap：递归锁定依赖
+注意: 如果 node_modules 下存在某个模块（如直接通过 npm install xxx 安装的）而 package.json 中没有，运行 npm shrinkwrap 则会报错。另外，npm shrinkwrap 只会生成 dependencies 的依赖，不会生成 devDependencies 的。
