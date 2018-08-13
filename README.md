@@ -26,7 +26,6 @@
    * 箭头函数 与 function 的区别
    * `引用`  `const`  `Set` `Map` `symbol`
    * ... 的使用上, 如何实现一个数组的去重 (使用 Set 可以加分)
-   * 
 
 ## 模块
 
@@ -72,3 +71,36 @@
    * 锁版本
        - npm shrinkwrap：递归锁定依赖
 注意: 如果 node_modules 下存在某个模块（如直接通过 npm install xxx 安装的）而 package.json 中没有，运行 npm shrinkwrap 则会报错。另外，npm shrinkwrap 只会生成 dependencies 的依赖，不会生成 devDependencies 的。
+
+## 事件/异步
+
+### promise [迷你书](http://liubin.org/promises-book/) [实现详解](https://zhuanlan.zhihu.com/p/25178630)
+   * 如何处理 Callback Hell
+     -  Q, async, EventProxy
+     -  promise
+     -  co generate
+     -  async await
+   * Promise 的实现
+   * js运行机制 & node 运行机制
+      ```javascript
+        setTimeout(function() {
+          console.log(1)
+        }, 0);
+        new Promise(function executor(resolve) {
+          console.log(2);
+          for( var i=0 ; i<10000 ; i++ ) {
+            i == 9999 && resolve();
+          }
+          console.log(3);
+        }).then(function() {
+          console.log(4);
+        });
+        console.log(5);
+
+        // 2 3 5 4 1
+      ```
+      ```
+
+### Events
+   * Node.js 中 Eventemitter 的 emit 是同步的.(确保顺序，避免竞争，逻辑错误...)
+   * 
