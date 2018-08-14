@@ -1,10 +1,11 @@
-const EventEmitter = require('events');
+function test() {
+  console.log(1111)
+  process.nextTick(() => test());
+}
 
-let emitter = new EventEmitter();
+function test2() {
+  console.log(222222)
+  setTimeout(() => test2(), 0);
+}
 
-emitter.on('myEvent', function sth () {
-  emitter.on('myEvent', sth);
-  console.log('hi');
-});
-
-emitter.emit('myEvent');
+test2()
