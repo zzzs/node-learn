@@ -172,3 +172,44 @@
    * Monogdb 连接问题(超时/断开等)有可能是什么问题导致的?
 
 ### redis & memcache
+
+## 安全
+
+### TLS/SSL
+
+### HTTPS
+
+### XSS
+   * CSP 策略
+
+### CSRF
+   * CSRF token
+   * 同源检查: Origin Header & Referer Header
+
+### 中间人攻击
+   * wife
+
+### SQL/NoSQL 注入
+
+## util
+
+### util.* 源码
+
+### lodash 源码
+
+## 测试
+
+## 错误处理/调试
+### Errors
+   * Standard JavaScript errors  标准 JavaScript 错误 由错误代码触发
+   * System errors  系统错误  由操作系统触发
+   * User-specified errors  用户自定义错误  通过 throw 抛出 
+   * Assertion errors 断言错误  由 assert 模块触发
+
+### TODO
+   * 怎么处理未预料的出错? 用 try/catch , domains 还是其它什么?
+   * 为什么要在 cb 的第一参数传 error? 为什么有的 cb 第一个参数不是 error, 例如 http.createServer?
+
+
+
+
