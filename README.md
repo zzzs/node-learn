@@ -1,11 +1,24 @@
-# node learn node学习笔记
+# node learn
 
 ## js基础
 ### 类型判断 [ladash](https://github.com/zzzs/lodash)
-   * typeof
+   * typeof 基本数据类型
+     - isSymbol 独一无二
+     - isfunction
    * instanceof 判断对象是某个实例
    * constructor 它指向构造该对象的构造函数
-   * Object.prototype.toString.call() console.log(bject.prototype.toString.call([])) //[object Array]
+   * Object.prototype.toString.call()
+     - console.log(Object.prototype.toString.call([])) //[object Array]
+     - objectToString(re) === '[object RegExp]'
+     - objectToString(d) === '[object Date]'
+   * 其他
+     - undefined === void 0
+     - NullOrUndefined == null
+     - isObject: typeof arg === 'object' && arg !== null;
+     - (objectToString(e) === '[object Error]' || e instanceof Error);
+     - Buffer.isBuffer
+     - isPrimitive 是否是基本类型
+       + arg === null || typeof arg === 'boolean' || typeof arg === 'number' || typeof arg === 'string' || typeof arg === 'symbol' ||  // ES6 symbol typeof arg === 'undefined';
 
 ### 作用域 `《你不知道的 JavaScript》`
    * 不论var声明的变量处于当前作用域的第几行，都会提升到作用域的头部。 
@@ -113,7 +126,7 @@
 ### Timer
    * 事件循环, Timers 以及 nextTick 的关系
    * nextTick, setTimeout 以及 setImmediate
-    ```
+    ```text
            ┌───────────────────────┐
         ┌─>│        timers         │
         │  └──────────┬────────────┘
