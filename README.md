@@ -126,6 +126,7 @@
 ### Timer
    * 事件循环, Timers 以及 nextTick 的关系
    * nextTick, setTimeout 以及 setImmediate
+    
     ```text
            ┌───────────────────────┐
         ┌─>│        timers         │
