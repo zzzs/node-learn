@@ -1,5 +1,16 @@
 # node learn
 
+## 基础
+  * 特性
+    - 单线程
+    - 异步 io
+      + 非阻塞 & 阻塞
+      + 异步 & 非异步
+    - 事件驱动
+      + 主进程，执行栈，事件队列（事件循环：取一个放到执行栈中执行，异步的线程池中的线程处理，回调放到队列尾部），异步处理的线程池
+    - 跨平台
+      + libuv 库
+
 ## js基础
 ### 类型判断 [ladash](https://github.com/zzzs/lodash)
    * typeof 基本数据类型
@@ -88,6 +99,7 @@
 ## 事件/异步
 
 ### promise [迷你书](http://liubin.org/promises-book/) [实现详解](https://zhuanlan.zhihu.com/p/25178630)
+   * 原理：状态机，事件队列
    * 如何处理 Callback Hell
      -  Q, async, EventProxy
      -  promise
@@ -101,7 +113,7 @@
           }, 0);
           new Promise(function executor(resolve) {
             console.log(2);
-            for( var i=0 ; i<10000 ; i++ ) {
+            for( var i=0; i<10000; i++ ) {
               i == 9999 && resolve();
             }
             console.log(3);
@@ -180,12 +192,44 @@
    * 索引是用空间换时间的一种优化策略
    * （产生脏数据）数据一致性：锁，事务
    * 引擎
+   * 维护工具更棒
+   * 索引优化
+     - 组合索引，查询顺序
+     - 大数据索引更新
+     - like 导致的索引失效
+     - 磁盘空间 维护索引耗时
 
 ### mongodb
    * 数据一致性问题
    * Monogdb 连接问题(超时/断开等)有可能是什么问题导致的?
+   * json 格式与 js 更友好
+   * 数据是存储在硬盘上的，只不过需要经常读取的数据会被加载到内存中，将数据存储在物理内存中，从而达到高速读写
 
 ### redis & memcache
+   * redis 单核 100k 以下更快，memcahce 多核，大数据量更快，但性能很难是瓶颈
+   * 持久性，redis 定期写入磁盘，memcache 重启后数据会丢失
+   * 内存使用率上，简单key-value memcache 会更高，其他 redis 更好
+   * redis 支持主从，集群，更高可用 
+
+### http 缓存
+  * 强制缓存
+    - expired
+    - cache-control
+    - Pragma
+  * 对比缓存
+    - last-modifred (if modified since)
+    - etag (If-None-Match) (优先级高于Last-Modified  /  If-Modified-Since) 
+
+## 网络
+
+### osi
+  * 物理层 宽带
+  * 链路层 交换机
+  * 网络层 ip
+  * 传输层 tcp
+  * 会话层
+  * 表示层
+  * 应用层
 
 ## 安全
 
@@ -223,6 +267,14 @@
 ### TODO
    * 怎么处理未预料的出错? 用 try/catch , domains 还是其它什么?
    * 为什么要在 cb 的第一参数传 error? 为什么有的 cb 第一个参数不是 error, 例如 http.createServer?
+
+## 其他
+  * 对比 PHP
+    - 性能
+    - 社区
+    - 文档
+    - 成熟度
+    - 生态
 
 
 
