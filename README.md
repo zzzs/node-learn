@@ -276,6 +276,20 @@
     - 成熟度
     - 生态
 
+## demo
+
+### http 服务端，客户端
+
+### http curd 路由实现
+
+### 小型框架实现
+ * use(fn) 用一个 middleware(Array) 队列 维护
+ * fn(req, res, next) next() 匹配路由，中间件等 循环调用 middleware 队列
+
+### koa
+
+### egg
+ * load 挂载 controller，model 等到 app 实例上
 
 
 
