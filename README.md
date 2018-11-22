@@ -287,9 +287,7 @@
  * fn(req, res, next) next() 匹配路由，中间件等 循环调用 middleware 队列
 
 ### koa
+ > koa 是 express 原班人马实现的，比 express 更轻量，只是在 http 模块 create Server 上封装了一层。中间件的处理基于 koa-compose，使得有了洋葱式的流程控制，中间件会传入一个叫 `ctx` 的上下文，这个上下文包含的 http 回调 handle 里的 请求[req] 和 相应[res], 以及框架自身扩展的一些属性方法，本身不依赖任何中间件，靠生态的中间件自由开发。 
 
 ### egg
  * load 挂载 controller，model 等到 app 实例上
-
-
-
