@@ -5,7 +5,9 @@
     - 单线程
     - 异步 io
       + 非阻塞 & 阻塞
+      > 是否去处理其他的任务
       + 异步 & 非异步
+      > 是否要等待结果回来
     - 事件驱动
       + 主进程，执行栈，事件队列（事件循环：取一个放到执行栈中执行，异步的线程池中的线程处理，回调放到队列尾部），异步处理的线程池
     - 跨平台
@@ -291,3 +293,5 @@
 
 ### egg
  * load 挂载 controller，model 等到 app 实例上
+ * egg 运行原理
+ > 运行原理主要是 egg-cluster，多进程模型：master, agent, worker。master 负责管理agent，worker进程，包括启动，重启，退出，消息通信等。master 首先child_process模式 fork agent进程，初始化好了通知master进程，再fork worker进程，完了再cfork worker进程，初始化好了就开启服务
