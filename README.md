@@ -278,6 +278,64 @@
     - 成熟度
     - 生态
 
+## function
+
+### Object.create
+> 创建一个具有指定原型且可选择性地包含指定属性的对象。(将对象继承到原型上)
+```js
+    var newObj = Object.create(null, {
+        size: {
+            value: "large",
+            enumerable: true
+        },
+        shape: {
+            value: "round",
+            enumerable: true
+        }
+    });
+
+    document.write(newObj.size + "<br/>");
+    document.write(newObj.shape + "<br/>");
+    document.write(Object.getPrototypeOf(newObj));
+
+    // Output:
+    // large
+    // round
+    // null
+```
+
+### Object.getPrototypeOf
+
+## module
+
+### only 
+> Return whitelisted properties of an object.
+
+```js
+    var obj = {
+      name: 'tobi',
+      last: 'holowaychuk',
+      email: 'tobi@learnboost.com',
+      _id: '12345'
+    };
+    var user = only(obj, 'name last email');
+    // output
+    {
+      name: 'tobi',
+      last: 'holowaychuk',
+      email: 'tobi@learnboost.com'
+    }
+```
+
+### is-generator-function
+
+### statuses
+> HTTP status utility for node.
+
+### koa-is-json
+> Check if a body is JSON
+
+
 ## demo
 
 ### http 服务端，客户端
