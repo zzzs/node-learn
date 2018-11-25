@@ -350,6 +350,10 @@
  > koa 是 express 原班人马实现的，比 express 更轻量，只是在 http 模块 create Server 上封装了一层。中间件的处理基于 koa-compose，使得有了洋葱式的流程控制，中间件会传入一个叫 `ctx` 的上下文，这个上下文包含的 http 回调 handle 里的 请求[req] 和 相应[res], 以及框架自身扩展的一些属性方法，本身不依赖任何中间件，靠生态的中间件自由开发。 
 
 ### egg
+ * 多进程管理特性
+ * 渐进式开发
  * load 挂载 controller，model 等到 app 实例上
  * egg 运行原理
  > 运行原理主要是 egg-cluster，多进程模型：master, agent, worker。master 负责管理agent，worker进程，包括启动，重启，退出，消息通信等。master 首先child_process模式 fork agent进程，初始化好了通知master进程，再fork worker进程，完了再cfork worker进程，初始化好了就开启服务
+ * egg-core
+ > egg 很重要的特性就是基于一定的目录约定，将不同代码放在不同目录管理，像controller,service等，对企业级的应用更友好。而egg-core作为egg框架的核心，里面的loader则是将controller，model 等挂载到 app，context上下文，core上实现的了具体的各个加载单元的加载逻辑。
