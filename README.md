@@ -140,6 +140,10 @@
 ### Timer
    * 事件循环, Timers 以及 nextTick 的关系
    * nextTick, setTimeout 以及 setImmediate
+     - process.nextTick 在执行站尾部，效率最高，消费资源小，但会阻塞CPU的后续调用；
+     - setTimeout 在事件队列尾部，精确度不高，可能有延迟执行的情况发生，且因为动用了红黑树，所以消耗资源大；
+     - setImmediate 在事件队列尾部，消耗的资源小，也不会造成阻塞，但效率也是最低的。
+     - setTimeout(fn, 1) 与 setImmediate 谁先谁后执行都有可能，主要看到下次tick是否已经过了1ms，到了则先执行，否则后执行
     
     ```text
            ┌───────────────────────┐
