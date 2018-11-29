@@ -20,7 +20,7 @@
      - isfunction
    * instanceof 判断对象是某个实例
    * constructor 它指向构造该对象的构造函数
-   * Object.prototype.toString.call()
+   * Object.prototype.toString.call(obj)
      - console.log(Object.prototype.toString.call([])) //[object Array]
      - objectToString(re) === '[object RegExp]'
      - objectToString(d) === '[object Date]'
@@ -348,7 +348,7 @@
 
 ### koa
  > koa 是 express 原班人马实现的，比 express 更轻量，只是在 http 模块 create Server 上封装了一层。中间件的处理基于 koa-compose，使得有了洋葱式的流程控制，中间件会传入一个叫 `ctx` 的上下文，这个上下文包含的 http 回调 handle 里的 请求[req] 和 相应[res], 以及框架自身扩展的一些属性方法，本身不依赖任何中间件，靠生态的中间件自由开发。 
-
+  
 ### egg
  * 多进程管理特性
  * 渐进式开发
